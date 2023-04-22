@@ -1,7 +1,8 @@
 import { message } from "antd"
+import Link from "next/link"
 import { useState } from "react"
 
-interface UserItem {
+export interface UserItem {
     id: number,
     name: string,
     email: string,
@@ -133,7 +134,10 @@ export default function Users({data}: {data: {message: string, code: number, dat
                                         id: item.id,
                                     })
                                 }} className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded mr-2">编辑</button>
-                                <button onClick={() => deleteUser(item.id)} className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">删除</button>
+                                <button onClick={() => deleteUser(item.id)} className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mr-2">删除</button>
+                                    <Link href={`/user/${item.id}`}>
+                                        <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">详情</button>
+                                    </Link>
                             </td>
                         </tr>
                     })
